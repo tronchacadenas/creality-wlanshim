@@ -3,24 +3,33 @@ name: build
 on:
   push:
     branches: [main]
+    tags:
+      - 'v*' # Triggers automatic release on version tags (e.g. v1.0.0)
   pull_request:
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Grants permissions to create releases
     steps:
       - uses: actions/checkout@v4
+      
       - name: Install MinGW-w64
         run: sudo apt-get update && sudo apt-get install -y g++-mingw-w64-x86-64
+        
       - name: Build
         run: bash ./build.sh
+        
       - name: Checksum
         run: sha256sum wlanapi.dll | tee wlanapi.dll.sha256
-      - uses: actions/upload-artifact@v4
+        
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: wlanshim
-          path: |
+          files: |
             wlanapi.dll
             wlanapi.dll.sha256
             install-shim.ps1
