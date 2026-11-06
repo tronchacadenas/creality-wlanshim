@@ -1,0 +1,20 @@
+LIBRARY wlanapi
+EXPORTS
+    WlanOpenHandle = Shim_WlanOpenHandle
+    WlanCloseHandle = Shim_WlanCloseHandle
+    WlanFreeMemory = Shim_WlanFreeMemory
+    WlanEnumInterfaces = Shim_WlanEnumInterfaces
+    WlanQueryInterface = Shim_WlanQueryInterface
+    WlanScan = Shim_WlanScan
+    WlanGetAvailableNetworkList = Shim_WlanGetAvailableNetworkList
+    WlanGetNetworkBssList = Shim_WlanGetNetworkBssList
+    WlanConnect = Shim_WlanConnect
+    WlanDisconnect = Shim_WlanDisconnect
+    WlanSetProfile = Shim_WlanSetProfile
+    WlanGetProfileList = Shim_WlanGetProfileList
+    WlanGetProfile = Shim_WlanGetProfile
+    WlanDeleteProfile = Shim_WlanDeleteProfile
+    WlanRegisterNotification = Shim_WlanRegisterNotification
+    WlanReasonCodeToString = Shim_WlanReasonCodeToString
+    WlanSetInterface = Shim_WlanSetInterface
+    WlanGetInterfaceCapability = Shim_WlanGetInterfaceCapability

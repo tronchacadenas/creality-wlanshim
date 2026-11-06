@@ -1,0 +1,3 @@
+# build output (produced by build.sh / CI; publish via releases)
+wlanapi.dll
+wlanapi.dll.sha256
